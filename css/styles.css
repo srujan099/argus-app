@@ -208,6 +208,8 @@ input[type=range]{width:100%;accent-color:var(--ok);}
 .ok-text { color: var(--ok); }
 .calc-note { text-align: center; font-size: 13px; color: var(--muted-2); margin-top: 28px; font-family: var(--mono); }
 
-/* ---------- WHATSAPP FLOAT ---------- */
-.wa-float { position: fixed; bottom: 24px; left: 24px; background: #25D366; color: #000; font-weight: 600; font-size: 14px; padding: 12px 20px; border-radius: 50px; display: flex; align-items: center; gap: 8px; box-shadow: 0 10px 25px -5px rgba(37, 211, 102, 0.4); transition: transform 0.2s, box-shadow 0.2s; z-index: 100; font-family: var(--body); }
-.wa-float:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -5px rgba(37, 211, 102, 0.6); }
+/* ---------- NAVIGATION WHATSAPP STYLE ---------- */
+.nav-links a[href*="wa.me"]:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+}
