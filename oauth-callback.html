@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argus — Connecting…</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+<style>
+  body{display:flex;align-items:center;justify-content:center;min-height:100vh;}
+  .box{max-width:480px;padding:36px;text-align:center;}
+  .box h1{font-family:var(--display);font-size:22px;margin-bottom:14px;}
+  .box p{color:var(--muted);font-size:14.5px;line-height:1.6;margin-bottom:10px;}
+  code{background:var(--panel-2);padding:2px 7px;border-radius:5px;font-family:var(--mono);font-size:13px;word-break:break-all;}
+  .panel{margin-top:20px;text-align:left;}
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+<div class="box">
+  <div class="logo" style="justify-content:center;margin-bottom:20px;"><img src="assets/logo.svg" alt="Argus logo"> ARGUS</div>
+  <h1>Almost there</h1>
+  <p id="status">Reading response…</p>
+  <div class="panel" id="detail" style="display:none;">
+    <p style="margin-bottom:6px;">Authorization code received:</p>
+    <p><code id="codeVal"></code></p>
+    <p style="margin-top:16px;">This page can't finish the connection on its own — the code above needs to be sent to a small server-side function that holds your App Secret / Client Secret and exchanges it for an access token. See <strong>README.md → "The part GitHub Pages can't do"</strong> for how to add that.</p>
+  </div>
+  <a href="dashboard.html" class="btn-secondary" style="display:inline-block;margin-top:22px;">← Back to dashboard</a>
+</div>
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const code = params.get('code');
+  const error = params.get('error');
+  const status = document.getElementById('status');
+  const detail = document.getElementById('detail');
+  if(code){
+    status.textContent = 'The platform sent back an authorization code.';
+    document.getElementById('codeVal').textContent = code;
+    detail.style.display = 'block';
+  } else if(error){
+    status.textContent = 'The connection was cancelled or denied: ' + error;
+  } else {
+    status.textContent = 'No authorization code found in the URL.';
+  }
+</script>
+</body>
+</html>

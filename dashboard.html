@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Argus — Dashboard</title>
+<link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <aside class="sidebar" id="sidebar">
+    <div class="logo"><img src="assets/logo.svg" alt="Argus logo"> ARGUS</div>
+    <ul class="side-nav">
+      <li><a href="#" data-tab="overview" data-title="Overview" class="active">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
+        Overview
+      </a></li>
+      <li><a href="#" data-tab="alerts" data-title="Alerts">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+        Alerts
+      </a></li>
+      <li><a href="#" data-tab="integrations" data-title="Integrations">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 2v4M15 2v4M9 18v4M15 18v4M2 9h4M2 15h4M18 9h4M18 15h4"/><rect x="6" y="6" width="12" height="12" rx="2"/></svg>
+        Integrations
+      </a></li>
+      <li><a href="#" data-tab="settings" data-title="Settings">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 11-2.83-2.83l.06-.06A1.65 1.65 0 004.6 15a1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 112.83-2.83l.06.06A1.65 1.65 0 009 4.6a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 112.83 2.83l-.06.06A1.65 1.65 0 0019.4 9a1.65 1.65 0 001.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1z"/></svg>
+        Settings
+      </a></li>
+    </ul>
+    <div class="side-foot">v0.1 · demo build<br>sample data throughout</div>
+  </aside>
+
+  <div class="main-col">
+
+    <div class="mobile-topbar">
+      <div class="logo"><img src="assets/logo.svg" alt="Argus logo"> ARGUS</div>
+      <button id="sidebarToggle">☰</button>
+    </div>
+
+    <div class="topbar">
+      <h1 id="pageTitle">Overview</h1>
+      <div class="topbar-controls">
+        <div class="dropdown" id="accountDropdown">
+          <button class="dropdown-btn">
+            <span class="logo-eye" style="width:8px;height:8px;"></span>
+            <span id="accountLabel">All accounts</span>
+            <span class="caret">▾</span>
+          </button>
+          <div class="dropdown-menu" id="accountMenu"></div>
+        </div>
+        <a href="index.html" class="btn-sm">← Back to site</a>
+      </div>
+    </div>
+
+    <div class="content">
+
+      <!-- OVERVIEW -->
+      <div class="tab-panel active" id="tab-overview">
+        <div class="kpi-grid">
+          <div class="kpi-card"><div class="kpi-label">Connected accounts</div><div class="kpi-val" id="kpiAccounts">0</div><div class="kpi-delta up">Live</div></div>
+          <div class="kpi-card"><div class="kpi-label">Alerts, last 12h</div><div class="kpi-val" id="kpiAlerts">0</div><div class="kpi-delta down">Watching</div></div>
+          <div class="kpi-card"><div class="kpi-label">Est. spend protected</div><div class="kpi-val" id="kpiSpend">₹0</div><div class="kpi-delta up">This week</div></div>
+          <div class="kpi-card"><div class="kpi-label">Avg. response time</div><div class="kpi-val" id="kpiResponse">—</div><div class="kpi-delta up">Alert → notification</div></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Spend protected, last 7 days</h2><div class="panel-sub">Ad spend saved by catching issues before end of day.</div></div>
+            <span class="sample-tag">SAMPLE DATA</span>
+          </div>
+          <div class="chart-box"><canvas id="spendChart"></canvas></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Alerts by platform</h2><div class="panel-sub">Where issues have come from recently.</div></div>
+            <span class="sample-tag">SAMPLE DATA</span>
+          </div>
+          <div class="chart-box"><canvas id="platformChart"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ALERTS -->
+      <div class="tab-panel" id="tab-alerts">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Live alert feed</h2><div class="panel-sub">New alerts stream in automatically. This is sample data — connect a live account to replace it.</div></div>
+            <span class="sample-tag">SAMPLE DATA</span>
+          </div>
+          <div class="filters-row">
+            <select class="filter-input" id="filterPlatform"></select>
+            <select class="filter-input" id="filterSeverity">
+              <option value="all">All severities</option>
+              <option value="alert">Alert</option>
+              <option value="info">Info</option>
+              <option value="ok">OK</option>
+            </select>
+            <input class="filter-input" id="filterSearch" type="text" placeholder="Search alerts…" style="flex:1;min-width:180px;">
+          </div>
+          <div class="console-body" id="alertsList"></div>
+        </div>
+      </div>
+
+      <!-- INTEGRATIONS -->
+      <div class="tab-panel" id="tab-integrations">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Connect your platforms</h2><div class="panel-sub">Meta and Google connect via real OAuth once you add your app credentials — see README. Others connect via API key/token.</div></div>
+          </div>
+          <div class="integrations-grid" id="integrationsGrid"></div>
+        </div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="tab-panel" id="tab-settings">
+        <div class="panel">
+          <div class="panel-head"><div><h2>Notification channels</h2><div class="panel-sub">Where Argus sends you alerts.</div></div></div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">Email</div><div class="toggle-sub">Daily digest + real-time alerts</div></div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">WhatsApp</div><div class="toggle-sub">Real-time alerts only</div></div>
+            <label class="switch"><input type="checkbox" checked><span class="slider"></span></label>
+          </div>
+          <div class="toggle-row">
+            <div><div class="toggle-label">Slack</div><div class="toggle-sub">Post to a connected channel</div></div>
+            <label class="switch"><input type="checkbox"><span class="slider"></span></label>
+          </div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head"><div><h2>Alert sensitivity</h2><div class="panel-sub">Higher sensitivity catches issues sooner but may surface more noise.</div></div></div>
+          <div class="range-row">
+            <label>Spend anomaly threshold <span id="outSpend">30%</span></label>
+            <input type="range" min="10" max="70" value="30" data-out="outSpend">
+          </div>
+          <div class="range-row">
+            <label>CPC / CPA spike threshold <span id="outCpc">25%</span></label>
+            <input type="range" min="10" max="70" value="25" data-out="outCpc">
+          </div>
+          <div class="range-row">
+            <label>Conversion drop threshold <span id="outConv">20%</span></label>
+            <input type="range" min="10" max="70" value="20" data-out="outConv">
+          </div>
+          <div style="margin-top:8px;"><button class="btn-primary" id="saveSettings">Save settings</button></div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3 id="modalTitle">Connect</h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="js/oauth-config.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
