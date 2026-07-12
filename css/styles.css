@@ -196,3 +196,14 @@ input[type=range]{width:100%;accent-color:var(--ok);}
   .log-plat, .log-tag{display:none;}
 }
 @media (prefers-reduced-motion: reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;}html{scroll-behavior:auto;}}
+
+/* ---------- CALCULATOR ---------- */
+.calc-box { background: var(--panel); border: 1px solid var(--hairline); border-radius: 12px; padding: 36px; max-width: 600px; margin: 0 auto; box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5); }
+.calc-box label { display: block; font-family: var(--display); font-weight: 600; margin-bottom: 24px; font-size: 18px; }
+.calc-box input[type=range] { width: 100%; accent-color: var(--ok); margin-bottom: 36px; cursor: pointer; }
+.calc-results { display: flex; flex-direction: column; gap: 16px; }
+.calc-row { display: flex; justify-content: space-between; color: var(--muted); border-bottom: 1px solid var(--hairline); padding-bottom: 16px; font-size: 15px; }
+.calc-row.total { border-bottom: none; color: var(--text); font-size: 18px; font-weight: 600; padding-top: 8px; }
+.alert-text { color: var(--alert); }
+.ok-text { color: var(--ok); }
+.calc-note { text-align: center; font-size: 13px; color: var(--muted-2); margin-top: 28px; font-family: var(--mono); }
