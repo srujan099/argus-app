@@ -51,3 +51,26 @@ const heroLogs = [
   if(!toggle || !links) return;
   toggle.addEventListener('click', () => links.classList.toggle('mobile-open'));
 })();
+
+// ROI Calculator logic
+(function initCalculator(){
+  const slider = document.getElementById('spend-slider');
+  const spendValue = document.getElementById('spend-value');
+  const wasteValue = document.getElementById('waste-value');
+  const savingsValue = document.getElementById('savings-value');
+
+  if(!slider) return;
+
+  slider.addEventListener('input', function(e) {
+    const spend = parseInt(e.target.value);
+    const waste = spend * 0.10; // Assuming 10% average waste
+    const savings = waste - 9999; // Subtracting the 9,999 Agency plan cost
+
+    // Format as INR
+    const formatter = new Intl.NumberFormat('en-IN', { style: 'currency', currency: 'INR', maximumFractionDigits: 0 });
+    
+    spendValue.textContent = formatter.format(spend);
+    wasteValue.textContent = formatter.format(waste);
+    savingsValue.textContent = formatter.format(savings > 0 ? savings : 0);
+  });
+})();
