@@ -156,7 +156,34 @@
       <div class="why-card smart"><div class="label">An Argus alert</div><p>Spend dropped because Campaign A entered learning-limited after audience overlap increased yesterday. Third time this month for this ad set.</p><span class="impact-tag">Estimated lost spend today: ₹42,000</span></div>
     </div>
   </section>
-
+<!-- ADDED: ROI Calculator -->
+  <section id="calculator">
+    <div class="section-head">
+      <div class="section-eyebrow">The ROI Math</div>
+      <h2>How much are you losing to silent anomalies?</h2>
+      <p class="section-sub">On average, businesses waste 10-12% of their monthly ad spend on broken tracking, learning-limited phases, and unnoticed CPA spikes. See your potential savings.</p>
+    </div>
+    <div class="calc-box">
+      <label for="spend-slider">Your Monthly Ad Spend: <span id="spend-value" class="accent">₹5,00,000</span></label>
+      <input type="range" id="spend-slider" min="50000" max="5000000" step="50000" value="500000">
+      
+      <div class="calc-results">
+        <div class="calc-row">
+          <span>Estimated Monthly Waste (10%)</span>
+          <strong id="waste-value" class="alert-text">₹50,000</strong>
+        </div>
+        <div class="calc-row">
+          <span>Argus Agency Plan</span>
+          <strong>₹9,999</strong>
+        </div>
+        <div class="calc-row total">
+          <span>Net Monthly Savings</span>
+          <strong id="savings-value" class="ok-text">₹40,001</strong>
+        </div>
+      </div>
+      <p class="calc-note">Argus pays for itself if it catches just one anomaly a month.</p>
+    </div>
+  </section>
   <section id="coverage">
     <div class="section-head">
       <div class="section-eyebrow">Coverage</div>
@@ -201,7 +228,30 @@
       </div>
     </div>
   </section>
-
+<!-- ADDED: Security & Trust -->
+  <section id="security">
+    <div class="section-head" style="margin: 0 auto 56px; text-align: center;">
+      <div class="section-eyebrow" style="justify-content: center;">Data Privacy</div>
+      <h2>Enterprise-grade security, even on the Starter plan.</h2>
+    </div>
+    <div class="coverage-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="cov-card">
+        <h3 style="font-size: 24px; margin-bottom: 12px;">🔒</h3>
+        <h3>Read-Only by Default</h3>
+        <p class="section-sub" style="font-size: 14px; margin-top: 8px;">We only monitor. Argus will never edit your campaigns, pause ads, or change budgets without your permission.</p>
+      </div>
+      <div class="cov-card">
+        <h3 style="font-size: 24px; margin-bottom: 12px;">🔑</h3>
+        <h3>Official OAuth</h3>
+        <p class="section-sub" style="font-size: 14px; margin-top: 8px;">Connect instantly via official Google and Meta API protocols. We never see or store your account passwords.</p>
+      </div>
+      <div class="cov-card">
+        <h3 style="font-size: 24px; margin-bottom: 12px;">🛡️</h3>
+        <h3>Your Data is Yours</h3>
+        <p class="section-sub" style="font-size: 14px; margin-top: 8px;">We encrypt all tokens with AES-256. We do not train public AI models on your metrics, and we never sell your data.</p>
+      </div>
+    </div>
+  </section>
   <section id="waitlist">
     <div class="waitlist">
       <h2>Be one of the first 30 accounts we watch.</h2>
